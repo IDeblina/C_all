@@ -1,14 +1,20 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-struct node{
+// We use the typedef keyword to create an alias name for data types. It is commonly used with structures to simplify the syntax of declaring variables.
+
+// For example, let us look at the following code:
+
+//https://www.programiz.com/c-programming/c-structures#google_vignette
+
+typedef struct node{
     int data;
     struct node *next;
-};
+} sll;
 
 struct node* add_at_end(struct node *ptr, int data){
 
-    struct node *temp = (struct node*)malloc(sizeof(struct node));
+    sll *temp = (struct node*)malloc(sizeof(sll));
     temp->data = data;
     temp->next = NULL;
 
@@ -17,8 +23,8 @@ struct node* add_at_end(struct node *ptr, int data){
 
 }
 struct node* getmiddle(struct node *head){
-    struct node *fast= head;
-    struct node *slow = head;
+    sll *fast= head;
+    sll *slow = head;
     while(fast!=NULL && fast->next!=NULL){
         slow= slow->next;
         fast = fast->next->next;
@@ -29,11 +35,11 @@ struct node* getmiddle(struct node *head){
 
 int main()
 {
-    struct node *head = malloc(sizeof(struct node));
+    sll *head = malloc(sizeof(sll));
     head->data = 40;
     head->next=NULL;
 
-    struct node *ptr = head;
+    sll *ptr = head;
 
     ptr = add_at_end(ptr,50);
     ptr = add_at_end(ptr,60);
